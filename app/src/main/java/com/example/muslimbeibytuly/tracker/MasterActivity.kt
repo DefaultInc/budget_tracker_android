@@ -1,6 +1,7 @@
 package com.example.muslimbeibytuly.tracker
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -39,8 +40,11 @@ class MasterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                         DataPoint(4.0, 6.0)
                 )
         )
-        graph.addSeries(series)
 
+        series.color =  Color.RED
+        series.backgroundColor = Color.rgb(255, 130, 149)
+        series.isDrawBackground = true
+        graph.addSeries(series)
         /**
          * transactions list view initialization
          */

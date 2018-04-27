@@ -8,33 +8,45 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MasterActivity"
-    tools:showIn="@layout/app_bar_master">
+    tools:showIn="@layout/app_bar_master"
+    android:theme="@style/MainTheme">
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
         android:layout_width="match_parent"
-        android:layout_height="150dip" />
-
+        android:layout_height="150dip"
+        app:seriesColor="#ee0000" />
+    <LinearLayout
+        android:id="@+id/balance1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/graph"
+        android:background="@drawable/border"
+        >
     <TextView
         android:id="@+id/balance"
-        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/balance"
-        app:layout_constraintTop_toBottomOf="@id/graph" />
+        android:text="@string/balance" />
 
     <TextView
         android:id="@+id/amount"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/amount"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/balance" />
-
+        android:textSize="24sp"
+        android:gravity="center"/>
+    </LinearLayout>
     <ListView
         android:id="@+id/transactionsListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/amount" />
+        app:layout_constraintTop_toBottomOf="@id/balance1"
+        android:background="@color/background"/>
 
 </android.support.constraint.ConstraintLayout>
