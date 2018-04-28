@@ -36,17 +36,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
+        /*if (requestCode == RC_SIGN_IN) {
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
                 // Successfully signed in
-                val intent = Intent(this, MasterActivity()::class.java)
+          */      val intent = Intent(this, MasterActivity()::class.java)
                 startActivity(intent)
-            } else {
+           /* } else {
                 Log.e("Response error", response.toString())
                 // Sign in failed, check response for error code
             }
-        }
+        }*/
     }
 }
