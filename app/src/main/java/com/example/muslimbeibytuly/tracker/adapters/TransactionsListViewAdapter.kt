@@ -28,7 +28,7 @@ class TransactionsListViewAdapter(private var activity: Activity, private var it
 
         if (convertView == null) {
             val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            view = inflater.inflate(R.layout.transaction_card, null)
+            view = LayoutInflater.from(parent!!.context).inflate(R.layout.transaction_card, parent, false)
             viewHolder = ViewHolder(view)
             view?.tag = viewHolder
         } else {
