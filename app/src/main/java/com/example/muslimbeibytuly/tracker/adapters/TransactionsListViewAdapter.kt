@@ -1,16 +1,16 @@
 package com.example.muslimbeibytuly.tracker.adapters
 
-import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.muslimbeibytuly.tracker.MasterActivity
 import com.example.muslimbeibytuly.tracker.R
-import com.example.muslimbeibytuly.tracker.models.Transaction
+import com.example.muslimbeibytuly.tracker.models.NewTransaction
 
-class TransactionsListViewAdapter(private var activity: Activity, private var items: ArrayList<Transaction>) : BaseAdapter() {
+class TransactionsListViewAdapter(private var activity: MasterActivity, private var items: ArrayList<NewTransaction>) : BaseAdapter() {
 
     private class ViewHolder(row: View?) {
         var content: TextView?
@@ -39,12 +39,12 @@ class TransactionsListViewAdapter(private var activity: Activity, private var it
         val transaction = items[position]
 
         viewHolder.content?.text = transaction.content
-        viewHolder.price?.text = transaction.price
+        viewHolder.price?.text = transaction.price.toString()
 
         return view as View
     }
 
-    override fun getItem(i: Int): Transaction {
+    override fun getItem(i: Int): NewTransaction {
         return items[i]
     }
 
