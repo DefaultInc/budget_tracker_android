@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 // Sign in failed, check response for error code
             }
         }
+
     }
 
     private fun showMainActivity() {
