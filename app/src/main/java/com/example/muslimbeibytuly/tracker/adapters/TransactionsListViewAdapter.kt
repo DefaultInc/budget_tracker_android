@@ -9,6 +9,9 @@ import android.widget.TextView
 import com.example.muslimbeibytuly.tracker.MasterActivity
 import com.example.muslimbeibytuly.tracker.R
 import com.example.muslimbeibytuly.tracker.models.NewTransaction
+import com.example.muslimbeibytuly.tracker.sumByLong
+import java.text.NumberFormat
+import java.util.*
 
 class TransactionsListViewAdapter(private var activity: MasterActivity, private var items: ArrayList<NewTransaction>) : BaseAdapter() {
 
@@ -39,7 +42,9 @@ class TransactionsListViewAdapter(private var activity: MasterActivity, private 
         val transaction = items[position]
 
         viewHolder.content?.text = transaction.content
-        viewHolder.price?.text = transaction.price.toString()
+        val format = NumberFormat.getCurrencyInstance(Locale.FRANCE)
+        format.currency = Currency.getInstance("KZT")
+        viewHolder.price?.text = format.format(transaction.price)
 
         return view as View
     }

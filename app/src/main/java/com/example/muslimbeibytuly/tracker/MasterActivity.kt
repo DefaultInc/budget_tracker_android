@@ -19,6 +19,7 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ListView
+import android.widget.TextView
 import com.example.muslimbeibytuly.tracker.adapters.TransactionsListViewAdapter
 import com.example.muslimbeibytuly.tracker.models.NewTransaction
 //import com.example.muslimbeibytuly.tracker.models.Transaction
@@ -35,11 +36,8 @@ import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionHelper
 import com.wangjie.rapidfloatingactionbutton.util.RFABTextUtil.dip2px
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout
-
-
-
-
-
+import java.text.NumberFormat
+import java.util.*
 
 
 class MasterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -82,10 +80,8 @@ class MasterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         graph.addSeries(series)
 
         mTransactionViewModel?.getAllTransactions()?.observe(this, Observer<List<NewTransaction>>() {
-            val adapter = TransactionsListViewAdapter(this, it as ArrayList<NewTransaction>)
-            val transactionsListView = findViewById<ListView>(R.id.transactionsListView)
-            transactionsListView.transcriptMode = ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
-            transactionsListView.adapter = adapter
+            updateTransactionList(it as ArrayList<NewTransaction>)
+            updateTotalAmount(it as ArrayList<NewTransaction>)
         })
 
 
@@ -207,4 +203,27 @@ class MasterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         fabCamera?.setOnClickListener(this)
     }
 
+    private fun updateTransactionList(transactions: ArrayList<NewTransaction>) {
+        val adapter = TransactionsListViewAdapter(this, transactions)
+        val transactionsListView = findViewById<ListView>(R.id.transactionsListView)
+        transactionsListView.transcriptMode = ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+        transactionsListView.adapter = adapter
+    }
+
+    private fun updateTotalAmount(transactions: ArrayList<NewTransaction>) {
+        val sum = transactions?.sumByLong { it.price }
+        val format = NumberFormat.getCurrencyInstance(Locale.FRANCE)
+        format.currency = Currency.getInstance("KZT")
+        val amountLabel = findViewById<View>(R.id.amount) as TextView
+        amountLabel.text = format.format(sum)
+    }
+
+}
+
+public inline fun <T> Iterable<T>.sumByLong(selector: (T) -> Long): Long {
+    var sum: Long = 0L
+    for (element in this) {
+        sum += selector(element)
+    }
+    return sum
 }
