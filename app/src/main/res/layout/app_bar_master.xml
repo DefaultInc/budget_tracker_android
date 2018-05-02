@@ -23,12 +23,40 @@
     <include layout="@layout/content_master" />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:visibility="invisible"
+        app:backgroundTint="@color/colorFAB2"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_camera" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="90dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:visibility="invisible"
+        app:elevation="6dp"
+        app:backgroundTint="@color/colorFAB1"
+        app:pressedTranslationZ="12dp"
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_write" />
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        app:elevation="6dp"
+        app:backgroundTint="@color/colorAccent"
+        app:pressedTranslationZ="12dp"
         android:layout_margin="@dimen/fab_margin"
         android:tint="@android:color/white"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
+        android:src="@drawable/ic_add" />
 </android.support.design.widget.CoordinatorLayout>
