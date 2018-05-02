@@ -13,6 +13,9 @@
     <string name="today">Today</string>
     <string name="take_a_photo">Take a Photo</string>
     <string name="preview_of_image">preview of image</string>
+    <string name="add_transaction_name">Transaction Name</string>
+    <string name="add_amount">Amount</string>
+    <string name="add_button">ADD</string>
     <string-array name="transactions">
         <item>Something</item>
         <item>Something</item>
