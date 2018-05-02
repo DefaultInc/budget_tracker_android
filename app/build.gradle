@@ -63,4 +63,3 @@ buildscript {
     ext.roomVersion = '1.0.0'
     ext.archLifecycleVersion = '1.1.0'
 }
-

@@ -21,10 +21,10 @@ class Converters {
 data class NewTransaction(
         @ColumnInfo(name = "content")
         var content: String,
-        @ColumnInfo(name = "date")
-        var date: Date = Calendar.getInstance().time,
         @ColumnInfo(name = "price")
-        var price: Long = 0
+        var price: Long = 0,
+        @ColumnInfo(name = "date")
+        var date: Date = Calendar.getInstance().time
     ) {
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)

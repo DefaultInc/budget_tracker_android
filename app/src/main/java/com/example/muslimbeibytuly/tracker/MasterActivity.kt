@@ -1,5 +1,6 @@
 package com.example.muslimbeibytuly.tracker
 
+import android.app.Dialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -157,11 +158,16 @@ class MasterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         when (id) {
             R.id.fab ->
                 animateFAB()
-            R.id.fab_write->
-                Log.d("Raj", "Fab 1")
+            R.id.fab_write-> {
+                /**
+                 * Add transaction activity.
+                 **/
+                val intent = Intent(this, AddTransactionActivity()::class.java)
+                startActivity(intent)
+            }
             R.id.fab_camera-> {
                 /**
-                 * camera image capture activity
+                 * Camera image capture activity.
                  **/
                 val intent = Intent(this, CameraActivity()::class.java)
                 startActivity(intent)
