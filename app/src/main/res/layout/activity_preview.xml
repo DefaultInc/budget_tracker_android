@@ -14,4 +14,12 @@
         android:visibility="gone"
         android:contentDescription="@string/preview_of_image" />
 
+    <Button
+        android:id="@+id/uploader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/take_a_photo" />
+
 </android.support.constraint.ConstraintLayout>
