@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -44,7 +45,8 @@ class PreviewActivity : AppCompatActivity() {
 
     fun parseImage() {
         val queue = Volley.newRequestQueue(this)
-        val url = "https://receipt-parser-201920.appspot.com/api"
+        //val url = "https://receipt-parser-201920.appspot.com/api"
+        val url = "http://127.0.0.1:8080/api"
         val stringRequest = object : StringRequest(
                 Request.Method.POST,
                 url,
@@ -56,24 +58,24 @@ class PreviewActivity : AppCompatActivity() {
                 }) {
 
             override fun getBodyContentType(): String {
-                val BOUNDARY = "AS24adije32MDJHEM9oMaGnKUXtfHq"
-                val MULTIPART_FORMDATA = "multipart/form-data;boundary=" + BOUNDARY
+                val MULTIPART_FORMDATA = "application/x-www-form-urlencoded"
                 return MULTIPART_FORMDATA
             }
 
             override fun getHeaders(): Map<String, String> {
                 val headers = HashMap<String, String>().apply {
-                    put("Content-Type", "multipart/form-data")
+                    put("Content-Type", "application/x-www-form-urlencoded")
                 }
                 return headers
             }
 
-            override fun getBody(): ByteArray {
+            override fun getParams(): MutableMap<String, String> {
                 return HashMap<String, String>().apply {
-                    put("image", ResultHolder.image.toString())
-                }.toString().toByteArray()
+                    put("image", Base64.encodeToString(ResultHolder.image!!, 0).toString())
+                }
             }
         }
         queue.add(stringRequest)
     }
 }
+
